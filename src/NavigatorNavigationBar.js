@@ -77,7 +77,7 @@ class NavigatorNavigationBar extends React.Component {
     navigationStyles: NavigatorNavigationBarStyles,
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this._reset();
   }
 

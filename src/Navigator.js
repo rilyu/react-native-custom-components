@@ -444,7 +444,7 @@ var Navigator = createReactClass({
     };
   },
 
-  componentWillMount: function() {
+  componentDidMount: function() {
     // TODO(t7489503): Don't need this once ES6 Class landed.
     this.__defineGetter__('navigationContext', this._getNavigationContext);
 
@@ -476,9 +476,7 @@ var Navigator = createReactClass({
     });
     this._interactionHandle = null;
     this._emitWillFocus(this.state.routeStack[this.state.presentedIndex]);
-  },
 
-  componentDidMount: function() {
     this._isMounted = true;
     this._handleSpringUpdate();
     this._emitDidFocus(this.state.routeStack[this.state.presentedIndex]);
