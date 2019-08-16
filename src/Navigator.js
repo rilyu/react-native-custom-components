@@ -437,7 +437,6 @@ var Navigator = createReactClass({
 
     this._subRouteFocus = [];
     this.parentNavigator = this.props.navigator;
-console.log('=====', this.props.navigator);
     this._handlers = {};
     this.springSystem = new rebound.SpringSystem();
     this.spring = this.springSystem.createSpring();
@@ -463,7 +462,7 @@ console.log('=====', this.props.navigator);
       onPanResponderTerminate: this._handlePanResponderTerminate,
     });
     this._interactionHandle = null;
-    this._emitWillFocus(this.state.routeStack[this.state.presentedIndex]);
+    this._emitWillFocus(routeStack[initialRouteIndex]);
 
     return {
       sceneConfigStack: routeStack.map(
