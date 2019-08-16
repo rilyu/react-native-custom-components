@@ -431,25 +431,13 @@ var Navigator = createReactClass({
         'initialRoute is not in initialRouteStack.'
       );
     }
-    return {
-      sceneConfigStack: routeStack.map(
-        (route) => this.props.configureScene(route, routeStack)
-      ),
-      routeStack,
-      presentedIndex: initialRouteIndex,
-      transitionFromIndex: null,
-      activeGesture: null,
-      pendingGestureProgress: null,
-      transitionQueue: [],
-    };
-  },
 
-  componentDidMount: function() {
     // TODO(t7489503): Don't need this once ES6 Class landed.
     this.__defineGetter__('navigationContext', this._getNavigationContext);
 
     this._subRouteFocus = [];
     this.parentNavigator = this.props.navigator;
+console.log('=====', this.props.navigator);
     this._handlers = {};
     this.springSystem = new rebound.SpringSystem();
     this.spring = this.springSystem.createSpring();
@@ -477,6 +465,20 @@ var Navigator = createReactClass({
     this._interactionHandle = null;
     this._emitWillFocus(this.state.routeStack[this.state.presentedIndex]);
 
+    return {
+      sceneConfigStack: routeStack.map(
+        (route) => this.props.configureScene(route, routeStack)
+      ),
+      routeStack,
+      presentedIndex: initialRouteIndex,
+      transitionFromIndex: null,
+      activeGesture: null,
+      pendingGestureProgress: null,
+      transitionQueue: [],
+    };
+  },
+
+  componentDidMount: function() {
     this._isMounted = true;
     this._handleSpringUpdate();
     this._emitDidFocus(this.state.routeStack[this.state.presentedIndex]);
